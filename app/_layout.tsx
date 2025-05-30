@@ -1,10 +1,9 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { ProductProvider } from '../context/ProductContext';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -18,12 +17,13 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+   <ProductProvider>
+       <Stack>
+      <Stack.Screen name="index" options={{ title: 'Product List' }} />
+      <Stack.Screen name="[id]/add" options={{ title: 'Add Product' }} />
+      <Stack.Screen name="[id]/index" options={{ title: 'Product Details' }} />
+      <Stack.Screen name="edit" options={{ title: 'Edit Product' }} />
+    </Stack>
+    </ProductProvider>
   );
 }
