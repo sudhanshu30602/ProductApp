@@ -119,7 +119,7 @@ export default function EditProduct() {
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button title="Update Product" onPress={handleUpdate} color="#2196F3" />
+        <Button title="Update Product"  color='green' onPress={handleUpdate} />
       </View>
     </ScrollView>
   );
@@ -136,6 +136,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     color: '#333',
+  },
+  button:{
+     backgroundColor:'yellow',
+     height:50,
+     borderRadius:15,
   },
   input: {
     backgroundColor: '#f2f2f2',
